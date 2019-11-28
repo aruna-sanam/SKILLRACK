@@ -1,3 +1,11 @@
+Sample Input/Output:
+INPUT:
+    9
+    10 20 20 30 40 40 50 50 50 
+   
+   
+OUTPUT:
+    5
 int removeDuplicates(int a[],int n)
 {
     int len = n-1;
