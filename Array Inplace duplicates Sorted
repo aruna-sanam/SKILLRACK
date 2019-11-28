@@ -1,0 +1,21 @@
+int removeDuplicates(int a[],int n)
+{
+    int len = n-1;
+    int count =0;
+    for(int i=0;i<n;)
+    {
+        int j=i+1;
+        if(a[i]==a[j])
+        {
+            count++;
+            for(int k=j+1;k<n;k++)
+                a[k-1]=a[k];
+            a[len]=-1;
+            len--;
+        }
+        if(a[i]!=a[j])
+            i++;
+        if(a[i]==-1)
+          return n-count;
+    }
+}
