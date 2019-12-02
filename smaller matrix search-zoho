@@ -1,0 +1,99 @@
+A bigger NxN matrix is passed as the input.
+Also a smaller MxM matrix is passed as input. 
+The program must print TRUE if the smaller matrix can be
+found in the bigger matrix. Else the program must print FALSE.
+
+Input Format: 
+  First line will contain the value of N. 
+  Second line will contain the value of M.
+  Next N lines will contain the values in the N*N matrix with 
+  each value separated by one or more space.
+  Next M lines will contain the values in the M*M matrix with 
+  each value separated by one or more space.
+  
+Output Format: 
+  First line will contain the string value TRUE or FALSE 
+Boundary Conditions: 
+  3 <= N <= 20 2 <= M <= N 
+  
+Example Input/Output 1: 
+  Input: 
+  3
+  2
+  4 5 9
+  1 3 5
+  8 2 4 
+  3 5
+  2 4 
+  Output: TRUE
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+#include<stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int row,col;
+    scanf("%d %d\n",&row,&col);
+    int a[row][row],b[col][col];
+    for(int i=0;i<row;i++)
+    {
+        for(int j=0;j<row;j++)
+            scanf("%d ",&a[i][j]);
+    }
+    for(int i=0;i<col;i++)
+    {
+        for(int j=0;j<col;j++)
+            scanf("%d ",&b[i][j]);
+    }
+    int flag=0;
+    for(int i=0;i<=row-col;i++)
+    {
+        for(int j=0;j<=row-col;j++)
+        {
+            int ri=i,ci=j;
+            int index=0;
+            for(int k=0;k<col;k++)
+            {
+                ci=j;
+                for(int l=0;l<col;l++)
+                {
+                    if(b[k][l]==a[ri][ci])
+                        ci++;
+                    else
+                    {
+                        ci=-1;
+                        break;
+                    }
+                }
+                if(ci!=-1)
+                    ri++;
+                else
+                    break;
+                if(ri-i==col && ci-j==col)
+                {
+                    index=1;
+                    break;
+                }
+                if(index==1)
+                    flag=1;
+            }
+        }
+    }
+    if(flag==1)
+        printf("TRUE");
+    else
+        printf("FALSE");
+}
