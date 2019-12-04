@@ -1,0 +1,29 @@
+#include<stdio.h>
+#include <stdlib.h>
+int main()
+{
+    int neg1=-1,zer=0;
+    int n;
+    scanf("%d ",&n);
+    int a[n];
+    for(int i=0;i<n;i++)
+        scanf("%d ",&a[i]);
+    int prod = 1;
+    for(int i=0;i<n;i++)
+    {
+        if(a[i]<0 && neg1!=-1)
+        {
+            printf("%d ",(prod!=1)?prod:zer);
+            prod=1;
+            neg1=i;
+            continue;
+        }
+        if(a[i]<0 && neg1==-1)
+        {
+            neg1=i;
+            continue;
+        }
+        if(neg1!=-1)
+            prod*=a[i];
+    }
+}
