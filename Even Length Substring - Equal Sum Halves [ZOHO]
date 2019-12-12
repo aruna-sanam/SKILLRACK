@@ -1,0 +1,65 @@
+Even Length Substring - Equal Sum Halves [ZOHO] 
+
+Given a string S as input which consists only of digits from 0 to 9, 
+print the longest substring such that the sum of the digits in the first half 
+and the second half is the same. Print -1 if such a substring does not exist. 
+
+
+Input Format: 
+      The first line contains S 
+ Output Format: 
+        The first line contains the longest substring as per the rules defined above or -1. 
+        
+        
+Boundary Conditions:
+    1 <= Length of S <= 100
+Example Input/Output 1: 
+    Input: 123123 
+    Output: 123123 
+Explanation: The first half is 123 and the second half is 123. Hence the sum of the digits is equal.
+
+#include<stdio.h>
+#include <stdlib.h>
+int main()
+{
+    int flag=1;
+    char a[100];
+    int index1=-1;
+    int index2=-1;
+    int max =0;
+    scanf("%s",&a);
+    int n = strlen(a);
+    int k=2;
+    while(1)
+    {
+        for(int i=0;i<=n-k;i++)
+        {
+            int mid = i+(k/2);
+            int s1=0;
+            int s2=0;
+            for(int m=i;m<mid;m++)
+            {
+                s1=s1+(a[m]-'0');
+            }
+            for(int j=mid;j<i+k;j++)
+            {
+                s2=s2+(a[j]-'0');
+            }
+            printf("%d %d %d\n",i,i+k,mid);
+            if(s1==s2 && k>max)
+            {
+                flag=0;
+                max=k;
+                index1=i;
+                index2=i+k;
+            }
+        }
+        k+=2;
+        if(k>n)
+            break;
+    }
+    for(int i=index1;i<index2;i++)
+        printf("%c",a[i]);
+    if(flag==1)
+        printf("-1");
+}
