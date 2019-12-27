@@ -1,0 +1,42 @@
+Given an odd value of N, the program must print multi layered rhombus pattern in diamond shapes whose side contains N, N-2, ... 1 slashes respectively as shown below in the examples. Input Format: The first line contains N. Output Format: The multi layered rhombus pattern in diamond shapes whose side contains N, N-2, ... 1 slashes respectively. Hash symbol is used as a filler for other values. Boundary Conditions: 1 <= N <= 101 and N is odd. Example Input/Output 1: Input: 5 Output: ####/\#### ###/##\### ##/#/\#\## #/#/##\#\# /#/#/\#\#\ \#\#\/#/#/ #\#\##/#/# ##\#\/#/## ###\##/### ####\/####
+
+
+
+
+
+
+
+#include<stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int N;
+    scanf("%d\n",&N);
+    for(int i=1;i<=N;i++)
+    {
+        int times = N-i;
+        for(int o=0;o<times;o++)
+            printf("#");
+        for(int j=1;j<=i;j++)
+            (j%2)?printf("/"):printf("#");
+        for(int k=1;k<=i;k++)
+            (k%2)?printf("\\"):printf("#");
+        for(int p=0;p<times;p++)
+            printf("#");
+        printf("\n");
+    }
+    for(int i=N;i>=1;i--)
+    {
+        int times=N-i;
+        for(int o=0;o<times;o++)
+            printf("#");
+        for(int j=1;j<=i;j++)
+            (j%2)?printf("\\"):printf("#");
+        for(int k=1;k<=i;k++)
+            (k%2)?printf("/"):printf("#");
+        for(int p=0;p<times;p++)
+            printf("#");
+        printf("\n");
+    }
+}
